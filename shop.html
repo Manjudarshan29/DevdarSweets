@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <section id="header">
+        <a href="index.html" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong> Sweets </a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <h4 id="greet" class="user-greeting"></h4>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+
+        <div id="mobile">
+			<i id="bar" class="fas fa-outdent"></i>
+		</div>
+    </section>
+    <section id="cart">
+        <div class="container">
+            <div class="head">
+                <div class="shopping">
+                    <li id="lg-bag"><i class="fa-solid fa-cart-shopping"></i></li>
+                    <span class="quantity">0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="page-header">
+        <h2>Super value offers</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
+    </section>
+
+    <div class="list">
+        <!-- JavaScript will add products dynamically here -->
+    </div>
+
+    <div class="card">
+        <h1>My Cart</h1>
+        <div class="closeShopping"><img  src="https://i.postimg.cc/jdcyTVBk/circle-xmark-regular.png" height="40" width="40"></div>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="total1">Total</div>
+            <div class="total">0</div>
+            <!-- <button href="cod.html" >Checkout</button> -->
+            <input type="button" value="Checkout" href="cod.html">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 532 MG Road, Street 29, Bengaluru</p>
+            <p><strong>Phone:</strong> 08198-229312/(+91)93xxxxx785</p>
+            <p><strong>Hours:</strong> 8:00 - 20:00 Mon-Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="copyright">
+            <hr><hr>
+            <br>
+            <p>&copy; 2023, Devdar Sweets</p>
+        </div>
+    </footer>
+
+<script >
+    const bar = document.getElementById('bar');
+    const close = document.getElementById('close');
+    const nav = document.getElementById('navbar');
+
+    if(bar) {
+    bar.addEventListener('click', () => {
+        nav.classList.add('active');
+    })
+    }
+
+    if(close) {
+    close.addEventListener('click', () => {
+        nav.classList.remove('active')
+    })
+}
+let list = document.querySelector('.list');
+let listCard = document.querySelector('.listCard');
+let body = document.querySelector('body');
+let total = document.querySelector('.total');
+let quantity = document.querySelector('.quantity');
+let shopping = document.querySelector('.shopping');
+let closeShopping = document.querySelector('.closeShopping');
+
+shopping.addEventListener('click', () => {
+    body.classList.add('active');
+});
+
+closeShopping.addEventListener('click', () => {
+    body.classList.remove('active');
+});
+
+let products = [
+    { id: 1,
+        name: 'Motichoor laddu',
+        image: 'https://i.postimg.cc/h4krd7qx/800389791-1-anand-sweets-and-savouries-sweets-motichoor-laddu.webp',
+        price: 630
+    },
+    {
+        id: 2,
+        name: 'Kaaju Katli',
+        image: 'https://i.postimg.cc/XNTDKY5M/0ee1479c-d032-4822-89d2-3d008e78ec5c.jpg',
+        price: 1100
+    },
+    {
+        id: 3,
+        name: 'Mysore Pak',
+        image: 'https://i.postimg.cc/zG9B8Wbt/OIP.jpg',
+        price: 800
+    },
+    {
+        id: 4,
+        name: 'Dharwad Peda',
+        image: 'https://i.postimg.cc/dDPHJ5FQ/dharwad-peda-500x500.webp',
+        price: 500
+    },
+    {
+        id: 5,
+        name: 'Champakali',
+        image: 'https://i.postimg.cc/T1G0SpJh/OIP.jpg',
+        price: 450
+    },
+    {
+        id: 6,
+        name: 'Rasgulla',
+        image: 'https://i.postimg.cc/52G3JPSh/R.jpg',
+        price: 700
+    },
+    {
+        id: 7,
+        name: 'Dhood Peda',
+        image: 'https://i.postimg.cc/Ss4cQH2v/OIP.jpg',
+        price: 900
+    },
+    {
+        id: 8,
+        name: 'Dry Fruit Laddu',
+        image: 'https://i.postimg.cc/Z5rRYn8J/Dry-Fruit-3-1-1536x1536.jpg',
+        price: 2000
+    },
+];
+
+let listCards = JSON.parse(sessionStorage.getItem('listCards')) || [];
+
+
+function initApp() {
+    products.forEach((value, key) => {
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('item');
+        newDiv.innerHTML = `
+            <img src="${value.image}">
+            <div class="title">${value.name}</div>
+            <div class="price">${value.price.toLocaleString()}</div>
+            <button onclick="addToCard(${key})">Add To Cart</button>`;
+        list.appendChild(newDiv);
+    });
+}
+
+function addToCard(key) {
+    if (listCards[key] == null) {
+        listCards[key] = JSON.parse(JSON.stringify(products[key]));
+        listCards[key].quantity = 1;
+        let buttons = document.querySelectorAll('.item button');
+        buttons[key].innerText = 'Item Added';
+        if (key === 3) {
+            buttons[key].innerText = 'Added to Cart';
+        }
+    }
+    reloadCard();
+}
+
+function reloadCard() {
+    listCard.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    listCards.forEach((value, key) => {
+        if (value != null) {
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML = `
+                <div><img src="${value.image}"/></div>
+                <div>${value.name}</div>
+                <div>${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <div class="count">${value.quantity}</div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                </div>`;
+            listCard.appendChild(newDiv);
+            totalPrice += value.price;
+            count += value.quantity;
+        }
+    });
+    total.innerText = totalPrice.toLocaleString();
+    quantity.innerText = count;
+}
+function changeQuantity(key, quantity) {
+    if (quantity === 0) {
+        delete listCards[key];
+        let buttons = document.querySelectorAll('.item button');
+        buttons[key].innerText = 'Add To Cart';
+        if (key === 3) {
+            buttons[key].innerText = 'Add To Cart';
+        }
+    } else {
+        listCards[key].quantity = quantity;
+        listCards[key].price = quantity * products[key].price;
+    }
+    reloadCard();
+}
+
+ function saveCartToSessionStorage() {
+            sessionStorage.setItem('listCards', JSON.stringify(listCards));
+        }
+
+        window.addEventListener('beforeunload', saveCartToSessionStorage);
+
+        window.addEventListener('load', () => {
+            initApp();
+            reloadCard();
+        });
+
+</script>
+<!-- username display -->
+<script>
+    let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+    let GreetHead = document.getElementById('greet');
+    let Navbar = document.getElementById('navbar');
+    let SignoutBtn; // declare SignoutBtn outside functions to access it globally
+    let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+
+    let Signout = () => {
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        GreetHead.innerText = '';
+        if (SignoutBtn) {
+            SignoutBtn.style.display = 'none'; // hide the sign-out link
+        }
+        if (CreateAccountLink) {
+            CreateAccountLink.innerText = 'Login';
+            CreateAccountLink.href = 'login.html';
+            CreateAccountLink.style.display = 'block'; 
+            CreateAccountLink.classList.add('navbar-link'); 
+        }
+    }
+
+    let CheckCred = () => {
+        if (UserCreds) {
+            GreetHead.innerText = `Hii ${UserInfo.username}!  `;
+            const navbarItem = document.createElement('li');
+
+            // Sign out link
+            SignoutBtn = document.createElement('a');
+            SignoutBtn.href = '#'; 
+            SignoutBtn.innerText = 'Sign Out';
+            SignoutBtn.onclick = Signout;
+            SignoutBtn.classList.add('navbar-link'); 
+            navbarItem.appendChild(SignoutBtn);
+
+            // Create account link
+            CreateAccountLink = document.createElement('a');
+            CreateAccountLink.style.display = 'none';
+            CreateAccountLink.classList.add('navbar-link'); 
+            Navbar.appendChild(navbarItem);
+            Navbar.appendChild(CreateAccountLink);
+        } else {
+            CreateAccountLink = document.createElement('a');
+            CreateAccountLink.href = 'login.html';
+            CreateAccountLink.innerText = 'Login';
+            CreateAccountLink.classList.add('navbar-link'); 
+            Navbar.appendChild(CreateAccountLink);
+        }
+    };
+
+    window.addEventListener('load', CheckCred);
+</script>
+<!-- ------------------------------------- -->
+</body>
+
+</html>
