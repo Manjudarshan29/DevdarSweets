@@ -141,9 +141,9 @@ list-style: none;
     text-align: right;
 }
 
-.head .shopping img {
+/* .head .shopping img {
     width: 50px;
-}
+} */
 
 .head .shopping span {
     background: red;
@@ -194,6 +194,31 @@ list-style: none;
     width: 100%;
     padding: 10px;
 }
+
+#cart{
+    padding: 10px;
+    background-color: #ccdadf; 
+}
+
+#filter{
+    background-color: #898a97;
+    margin-top: 10px;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+}
+
+#filter #price-filter button{
+    width: 100px;
+    padding: 10px;
+    background-color: rgba(195, 202, 207, 0.694);
+}
+#filter #price-filter input{
+    width: 200px;
+    padding: 10px;
+}
+
 
 .card {
     position: fixed;
