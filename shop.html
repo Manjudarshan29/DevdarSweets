@@ -42,7 +42,14 @@
         <h2>Super value offers</h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
     </section>
-
+    <section id="filter">
+    <div id="price-filter">
+        <label for="price-range">Price Range: </label>
+        <input type="number" id="min-price" placeholder="Min Price">
+        <input type="number" id="max-price" placeholder="Max Price">
+        <button id="filter-button">Filter</button>
+    </div>
+    </section>
     <div class="list">
         <!-- JavaScript will add products dynamically here -->
     </div>
@@ -260,6 +267,34 @@ function changeQuantity(key, quantity) {
 </script>
 <!-- username display -->
 <script>
+
+const filterButton = document.getElementById('filter-button');
+filterButton.addEventListener('click', applyFilter);
+
+function applyFilter() {
+    const minPrice = parseFloat(document.getElementById('min-price').value);
+    const maxPrice = parseFloat(document.getElementById('max-price').value);
+
+    const filteredProducts = products.filter(product => {
+        const productPrice = product.price;
+        return (!minPrice || productPrice >= minPrice) && (!maxPrice || productPrice <= maxPrice);
+    });
+
+    list.innerHTML = '';
+
+    filteredProducts.forEach((product, key) => {
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('item');
+        newDiv.innerHTML = `
+            <img src="${product.image}">
+            <div class="title">${product.name}</div>
+            <div class="price">${product.price.toLocaleString()}</div>
+            <button onclick="addToCard(${key})">Add To Cart</button>`;
+        list.appendChild(newDiv);
+    });
+
+}
+
     let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
     let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
@@ -312,6 +347,9 @@ function changeQuantity(key, quantity) {
     };
 
     window.addEventListener('load', CheckCred);
+</script>
+<script>
+    
 </script>
 <!-- ------------------------------------- -->
 </body>
