@@ -36,7 +36,7 @@ p {
 }
 
 #page-header {
-    /* background-image: url('https://ds393qgzrxwzn.cloudfront.net/cat1/img/images/0/kydmI9hj6e.jpg'); */
+    background-image: url(images/two.png);
     width: 100%;
     height: 40vh;
     background-size: cover;
@@ -45,35 +45,8 @@ p {
     text-align: center;
     flex-direction: column;
     padding: 14px;
-    animation: homeChange 30s linear infinite;
 }
-@keyframes homeChange{
-    0%{ 
-      background-image: url(images/one.png);
-    }
-    20%{ 
-      background-image: url(images/two.png);
-    }
-    25%{ 
-      background-image: url(images/three.png);
-    }
-    45%{ 
-      background-image: url(images/four.png);
-    }
-    50%{ 
-      background-image: url(images/five.png);
-    }
-    70%{ 
-      background-image: url(images/six.png);
-    }
-    75%{ 
-      
-      background-image: url(images/seven.png);
-    }
-    95%{ 
-      background-image: url(images/eight.png);
-    }
-  }
+
 
 #header {
     display: flex;
@@ -92,7 +65,6 @@ p {
     display: flex;
     text-decoration: none;
     font-size: 23px;
-    font-weight: bold;
 }
 
 #navbar {
