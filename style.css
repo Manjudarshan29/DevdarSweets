@@ -129,7 +129,7 @@ body{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    animation: homeChange 30s linear infinite;
+    animation: homeChange 30s alternate-reverse infinite;
 }
 @keyframes homeChange{
     0%{ 
@@ -160,20 +160,20 @@ body{
   }
 
 #hero h3{
-    padding-bottom: 10px;
-    color: aliceblue;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    
 }
 #hero h1{
-    color:aliceblue;
+    color:rgb(255, 255, 255);
 }
 #hero h2{
-    color: mintcream;
+    color: rgb(255, 255, 255);
 }
 #hero p{
-    color: aliceblue;
+    color: rgb(255, 255, 255);
 }
 #hero button{
-    background-image: url('button.png');
     background-color: gold;
     color: #fff;
     padding: 14px 80px 14px 65px;
@@ -318,10 +318,6 @@ flex-wrap: wrap;
     padding: 10px 0;
 }
 
-#banner h1 span{
-    color: blue;
-    font-size: 35px;
-}
 
 footer{
     display: flex;

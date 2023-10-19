@@ -165,14 +165,14 @@
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
         const firebaseConfig = {
-        apiKey: "AIzaSyAgWVPZGPzaHoxDuSeWWDrDtcOcyeiWt_k",
-        authDomain: "devdar-ce8ba.firebaseapp.com",
-        databaseURL: "https://devdar-ce8ba-default-rtdb.firebaseio.com",
-        projectId: "devdar-ce8ba",
-        storageBucket: "devdar-ce8ba.appspot.com",
-        messagingSenderId: "562140767505",
-        appId: "1:562140767505:web:31605600f7c115bf1918b0",
-        measurementId: "G-XSYBG68LKZ"
+  apiKey: "AIzaSyAgWVPZGPzaHoxDuSeWWDrDtcOcyeiWt_k",
+  authDomain: "devdar-ce8ba.firebaseapp.com",
+  databaseURL: "https://devdar-ce8ba-default-rtdb.firebaseio.com",
+  projectId: "devdar-ce8ba",
+  storageBucket: "devdar-ce8ba.appspot.com",
+  messagingSenderId: "562140767505",
+  appId: "1:562140767505:web:31605600f7c115bf1918b0",
+  measurementId: "G-XSYBG68LKZ"
 };
 
         const app = initializeApp(firebaseConfig);
@@ -187,23 +187,24 @@
         let registerUser = evt => {
             evt.preventDefault();
             createUserWithEmailAndPassword(auth, email.value, password.value)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    set(ref(db, 'Devdar customer info/' + user.uid), {
+                .then((credentials) => {
+                    set(ref(db, 'Devdar customer info-->' + credentials.user.uid), {
                         username: username.value,
                         password: password.value,
-                        email: email.value
+                        email:email.value
                     });
+                  
                     alert("User registered successfully!");
                 })
                 .catch((error) => {
                     alert(error.message);
-                    console.error(error.code);
-                    console.error(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
                 });
         };
 
         mainForm.addEventListener('submit', registerUser);
     </script>
+
 </body>
 </html>
