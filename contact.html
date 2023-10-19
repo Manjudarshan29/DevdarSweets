@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>E-commerce website</title>
+	<script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<section id="header">
+		<a href="index.html" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
+		<div>
+			<ul id="navbar">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a class="active" href="contact.html">Contact</a></li>
+                <h5 id="greet" class="user-greeting"></h5>
+				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+			</ul>
+		</div>
+		<div id="mobile">
+			<i id="bar" class="fas fa-outdent"></i>
+		</div>
+	</section>
+	<section id="page-header" class="about-header">
+		<h2 style="color: #fff;">Lets Talk</h2>
+		<p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
+	</section>
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>GET IN TOUCH WITH US</span>
+            <h2>Visit one of our agency locations or contact us today</h2>
+            <h3>Head Office</h3>
+            <div>
+                <li>
+                    <i class="fa-solid fa-map"></i>
+                    <p>532 MG Road, Street 29, Bengaluru </p>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>devdarsweets@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <p>08198-229312/(+91)93xxxxx785</p>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    <p>8:00 - 20:00 Mon-Sat</p>
+                </li>
+            </div>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9554966950514!2d77.60687307332279!3d12.974698287340944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1687393dbc13%3A0x8b70c8e652b73d9e!2sMahatma%20Gandhi%20Rd%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1697356417712!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <section id="form-details">
+        <form onsubmit="sendEmail(), reset(); return false;">
+            <span>LEAVE A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" id="name" placeholder="Your Name" required="required">
+            <input type="text" id="email" placeholder="Email" required="required">
+            <textarea  cols="30" rows="10" id="message" placeholder="Your Message" required="required"></textarea>
+            <input type="submit" name="" value="Submit">
+        </form>
+        <div class="people">
+            <div>
+                <p><span>Dev Singh</span>Senior marketing manager <br> Phone: 08192-23456 <br> Email: devsingh@gmail.com</p>
+            </div>
+            <div>
+                <p><span>Amogh Narwal</span>Assistant marketing manager <br> Phone: 08192-23456 <br> Email: devsingh@gmail.com</p>
+            </div>
+            <div>
+                <p><span>Bhuvan Hooda</span>Sales manager <br> Phone: 08192-23456 <br> Email: devsingh@gmail.com</p>
+            </div>
+            <div>
+                <p><span>Rohan Smith</span> Assistant Sales manager <br> Phone: 08192-23456 <br> Email: devsingh@gmail.com</p>
+            </div>
+        </div>
+    </section>
+	<footer class="section-p1">
+		<div class="col">
+			<h4>Contact</h4>
+			<p><strong>Adress:</strong>532 MG Road, Street 29, Bengaluru </p>
+			<p><strong>Phone:</strong>08198-229312/(+91)93xxxxx785</p>
+			<p><strong>Hours:</strong>8:00 - 20:00 Mon-Sat</p>
+			<div class="follow">
+				<h4>Follow us</h4>
+				<div class="icons">
+					<i class="fab fa-facebook"></i>
+					<i class="fab fa-twitter"></i>
+					<i class="fab fa-instagram"></i>
+					<i class="fab fa-youtube"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<h4>About</h4>
+			<a href="#">About Us</a>
+			<a href="#">Delivery Information</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Contact Us</a>
+		</div>
+		<div class="col">
+			<h4>My Account</h4>
+			<a href="#">Sign In</a>
+			<a href="#">View Cart</a>
+			<a href="#">Help</a>
+		</div>
+		<div class="copyright">
+			<hr><hr>
+			<br>
+			<p>&copy; Copyright 2023, Devdar Sweets</p>
+		</div>
+		
+
+	</footer>
+
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            
+            function sendEmail(){
+              Email.send({
+              SecureToken:"6c1816ba-5efa-4b31-9cd2-3d3bc42e8f1f",
+              To: 'manjudarshan29@outlook.com',
+              From :'rorio045@gmail.com',
+              Subject : "Contact details query",
+              Body : "Name:"+ document.getElementById("name").value
+                    +"<br> Email:"+ document.getElementById("email").value
+                    +"<br> Message:"+ document.getElementById("message").value
+              }).then(
+               message => alert('Message sent successfully')
+               );
+            }
+     	</script>
+         <script>
+            let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+            let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+        
+            let GreetHead = document.getElementById('greet');
+            let Navbar = document.getElementById('navbar');
+            let SignoutBtn; // declare SignoutBtn outside functions to access it globally
+            let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+        
+            let Signout = () => {
+                sessionStorage.removeItem("user-creds");
+                sessionStorage.removeItem("user-info");
+                GreetHead.innerText = '';
+                if (SignoutBtn) {
+                    SignoutBtn.style.display = 'none'; // hide the sign-out link
+                }
+                if (CreateAccountLink) {
+                    CreateAccountLink.innerText = 'Login';
+                    CreateAccountLink.href = 'login.html';
+                    CreateAccountLink.style.display = 'block'; // display the create account link
+                    CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                }
+            }
+        
+            let CheckCred = () => {
+                if (UserCreds) {
+                    GreetHead.innerText = `Hii ${UserInfo.username}!  `;
+                    const navbarItem = document.createElement('li');
+        
+                    // Sign out link
+                    SignoutBtn = document.createElement('a');
+                    SignoutBtn.href = '#'; // replace with the appropriate link
+                    SignoutBtn.innerText = 'Sign Out';
+                    SignoutBtn.onclick = Signout;
+                    SignoutBtn.classList.add('navbar-link'); // add the appropriate class for styling
+                    navbarItem.appendChild(SignoutBtn);
+        
+                    // Create account link
+                    CreateAccountLink = document.createElement('a');
+                    CreateAccountLink.style.display = 'none'; // hide the link by default
+                    CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                    Navbar.appendChild(navbarItem);
+                    Navbar.appendChild(CreateAccountLink);
+                } else {
+                    CreateAccountLink = document.createElement('a');
+                    CreateAccountLink.href = 'login.html'; // Replace with the appropriate link
+                    CreateAccountLink.innerText = 'Login';
+                    CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                    Navbar.appendChild(CreateAccountLink);
+                }
+            };
+        
+            window.addEventListener('load', CheckCred);
+        </script>
+</body>
+
+
+</html>
