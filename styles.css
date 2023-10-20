@@ -201,7 +201,7 @@ list-style: none;
 }
 
 #filter{
-    background-color: #898a97;
+    background-color: #2a32a3;
     margin-top: 10px;
     padding: 20px;
     align-items: center;
@@ -212,12 +212,12 @@ list-style: none;
 #filter #price-filter button{
     width: 100px;
     padding: 10px;
-    background-color: rgba(195, 202, 207, 0.694);
+    background-color: #c5cccf
 }
 #filter #price-filter input{
     width: 200px;
     padding: 10px;
-}
+} 
 
 
 .card {
@@ -457,5 +457,6 @@ footer .copyright {
     border-radius: 8px;
     padding: 10px;
     }
+
    
 }

@@ -43,12 +43,12 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
     </section>
     <section id="filter">
-    <div id="price-filter">
-        <label for="price-range">Price Range: </label>
-        <input type="number" id="min-price" placeholder="Min Price">
-        <input type="number" id="max-price" placeholder="Max Price">
-        <button id="filter-button">Filter</button>
-    </div>
+        <div id="price-filter">
+            <label for="price-range">Price Range: </label>
+            <input type="number" id="min-price" placeholder="Min Price">
+            <input type="number" id="max-price" placeholder="Max Price">
+            <button id="filter-button">Filter</button>
+        </div>        
     </section>
     <div class="list">
         <!-- JavaScript will add products dynamically here -->
@@ -265,23 +265,27 @@ function changeQuantity(key, quantity) {
         });
 
 </script>
-<!-- username display -->
-<script>
 
+<script>
+// Add a click event listener to the filter button
 const filterButton = document.getElementById('filter-button');
 filterButton.addEventListener('click', applyFilter);
 
 function applyFilter() {
+    // Get the minimum and maximum prices from the input fields
     const minPrice = parseFloat(document.getElementById('min-price').value);
     const maxPrice = parseFloat(document.getElementById('max-price').value);
 
+    // Filter products based on the price range
     const filteredProducts = products.filter(product => {
         const productPrice = product.price;
         return (!minPrice || productPrice >= minPrice) && (!maxPrice || productPrice <= maxPrice);
     });
 
+    // Clear the current product list
     list.innerHTML = '';
 
+    // Display the filtered products
     filteredProducts.forEach((product, key) => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('item');
