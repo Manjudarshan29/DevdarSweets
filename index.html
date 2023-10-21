@@ -18,7 +18,7 @@
 				<li><a href="shop.html">Shop</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a href="contact.html">Contact</a></li>
-				<h6 id="greet" class="user-greeting"></h6>
+				<li><h6 id="greet" class="user-greeting"></h6></li>
 				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
 			</ul>
 		</div>
@@ -33,7 +33,6 @@
 		<h3>Your favorite sweets</h3>
 		<h2>Super value offers</h2>
 		<h1>On all products</h1>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
 		<a href="shop.html"><button>Shop Now</button></a>
 		</div>
 	</section>
@@ -47,7 +46,7 @@
 			<h6>Save Money</h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://safoodbank.org/wp-content/uploads/2018/05/Vegetarian-Icon.png" height="100">
+			<img src="images/f4.png" height="100">
 			<h6>100% Vegetarion</h6>
 		</div>
 		<div class="fe-box">
@@ -55,11 +54,11 @@
 			<h6>Happy Customers</h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://cdn-icons-png.flaticon.com/128/3082/3082101.png" height="100">
+			<img src="images/f6.png" height="100">
 			<h6>Hygienic </h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://tshirtsandallstore.com/wp-content/uploads/2020/02/pick-up-in-store.jpg" height="100">
+			<img src="images/f7.jpg" height="100">
 			<h6>In-store pickup</h6>
 		</div>
 	</section>
@@ -167,7 +166,6 @@
 			<p>&copy; Copyright 2023, Devdar Sweets</p>
 		</div>
 	</footer>
-<!-- 00000000000000000000000000000000000000000000000000 -->
 
 <script>
 
@@ -194,21 +192,21 @@
 
 	let GreetHead = document.getElementById('greet');
 	let Navbar = document.getElementById('navbar');
-	let SignoutBtn; // declare SignoutBtn outside functions to access it globally
-	let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+	let SignoutBtn; 
+	let CreateAccountLink;
 
 	let Signout = () => {
 		sessionStorage.removeItem("user-creds");
 		sessionStorage.removeItem("user-info");
 		GreetHead.innerText = '';
 		if (SignoutBtn) {
-			SignoutBtn.style.display = 'none'; // hide the sign-out link
+			SignoutBtn.style.display = 'none'; 
 		}
 		if (CreateAccountLink) {
 			CreateAccountLink.innerText = 'Login';
 			CreateAccountLink.href = 'login.html';
-			CreateAccountLink.style.display = 'block'; // display the create account link
-			CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+			CreateAccountLink.style.display = 'block'; 
+			CreateAccountLink.classList.add('navbar-link'); 
 		}
 	}
 
@@ -243,7 +241,6 @@
 	window.addEventListener('load', CheckCred);
 </script>
 
-<!-- 00000000000000000000000000000000000000000000000000 -->
 
 </body>
 </html>

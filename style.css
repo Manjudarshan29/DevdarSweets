@@ -58,10 +58,18 @@ body{
     left: 0;
 }
 
-#header a{
+#header a.logo {
     text-decoration: none;
     font-size: 23px;
-    width: bold;
+    color: #0512ff;
+}
+
+#header a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
 }
 
 #navbar{
@@ -83,6 +91,7 @@ body{
     color: #1a1a1a;
     transition: 0.3s ease;
 }
+
 #navbar li a:hover,
 #navbar li a.active{
     color: blue;
@@ -129,7 +138,7 @@ body{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    animation: homeChange 30s alternate-reverse infinite;
+    animation: homeChange 30s linear infinite;
 }
 @keyframes homeChange{
     0%{ 
@@ -176,10 +185,11 @@ body{
 #hero button{
     background-color: gold;
     color: #fff;
-    padding: 14px 80px 14px 65px;
+    /* padding: 14px 80px 14px 65px; */
     cursor: pointer;
     font-weight: 700;
     font-size: 15px;
+    padding-top: 20px;
 }
 
 #feature{
