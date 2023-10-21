@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shop</title>
     <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -40,13 +40,46 @@
     </section>
     <section id="page-header">
         <h2>Super value offers</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
+        <p>Indulge your senses in a world of confectionery wonders. </p>
     </section>
     <section id="filter">
         <div id="price-filter">
             <label for="price-range">Price Range: </label>
-            <input type="number" id="min-price" placeholder="Min Price">
-            <input type="number" id="max-price" placeholder="Max Price">
+            <select name="min-price" id="min-price">
+                <option value="Min-price">Minimum-Price</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
+
+            </select>
+            <select name="max-price" id="max-price">
+                <option value="Max-price">Maximum-Price</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
+                <option value="1100">1100</option>
+                <option value="1200">1200</option>
+                <option value="1300">1300</option>
+                <option value="1400">1400</option>
+                <option value="1500">1500</option>
+                <option value="1600">1600</option>
+                <option value="1700">1700</option>
+                <option value="1800">1800</option>
+                <option value="1900">1900</option>
+                <option value="2000">2000</option>
+            </select>
             <button id="filter-button">Filter</button>
         </div>        
     </section>
@@ -195,7 +228,7 @@ function initApp() {
         newDiv.innerHTML = `
             <img src="${value.image}">
             <div class="title">${value.name}</div>
-            <div class="price">${value.price.toLocaleString()}</div>
+            <div class="price">RS. ${value.price.toLocaleString()} /KG </div>
             <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     });

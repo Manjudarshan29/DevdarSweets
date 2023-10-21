@@ -213,12 +213,15 @@ list-style: none;
     font-weight: 600;
 }
 
+#filter label{
+    color: white;
+}
 #filter #price-filter button{
     width: 100px;
     padding: 10px;
-    background-color: #c5cccf
+    background-color: #ffffff
 }
-#filter #price-filter input{
+#filter #price-filter select{
     width: 200px;
     padding: 10px;
 } 
