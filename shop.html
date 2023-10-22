@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -300,32 +301,27 @@ function changeQuantity(key, quantity) {
 </script>
 
 <script>
-// Add a click event listener to the filter button
 const filterButton = document.getElementById('filter-button');
 filterButton.addEventListener('click', applyFilter);
 
 function applyFilter() {
-    // Get the minimum and maximum prices from the input fields
     const minPrice = parseFloat(document.getElementById('min-price').value);
     const maxPrice = parseFloat(document.getElementById('max-price').value);
 
-    // Filter products based on the price range
     const filteredProducts = products.filter(product => {
         const productPrice = product.price;
         return (!minPrice || productPrice >= minPrice) && (!maxPrice || productPrice <= maxPrice);
     });
 
-    // Clear the current product list
     list.innerHTML = '';
 
-    // Display the filtered products
     filteredProducts.forEach((product, key) => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('item');
         newDiv.innerHTML = `
             <img src="${product.image}">
             <div class="title">${product.name}</div>
-            <div class="price">${product.price.toLocaleString()}</div>
+            <div class="price">RS. ${product.price.toLocaleString()} /KG </div>
             <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     });
