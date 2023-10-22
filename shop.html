@@ -62,8 +62,7 @@
             </select>
             <select name="max-price" id="max-price">
                 <option value="Max-price">Maximum-Price</option>
-                <option value="300">300</option>
-                <option value="400">400</option>
+
                 <option value="500">500</option>
                 <option value="600">600</option>
                 <option value="700">700</option>
@@ -333,15 +332,15 @@ function applyFilter() {
 
     let GreetHead = document.getElementById('greet');
     let Navbar = document.getElementById('navbar');
-    let SignoutBtn; // declare SignoutBtn outside functions to access it globally
-    let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+    let SignoutBtn; 
+    let CreateAccountLink; 
 
     let Signout = () => {
         sessionStorage.removeItem("user-creds");
         sessionStorage.removeItem("user-info");
         GreetHead.innerText = '';
         if (SignoutBtn) {
-            SignoutBtn.style.display = 'none'; // hide the sign-out link
+            SignoutBtn.style.display = 'none'; 
         }
         if (CreateAccountLink) {
             CreateAccountLink.innerText = 'Login';
@@ -381,10 +380,6 @@ function applyFilter() {
 
     window.addEventListener('load', CheckCred);
 </script>
-<script>
-    
-</script>
-<!-- ------------------------------------- -->
 </body>
 
 </html>
