@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    e<title>myprofile</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .profile {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .profile input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .profile button {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .profile button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
+        <div>
+			<ul id="navbar">
+				<li><a class="active" href="index.html">Home</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				
+				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+				<div class="dropdown">
+					<h6 id="greet" class="user-greeting"></h6>
+					<div class="dropdown-content">
+					  <a href="mycart.html">My Cart</a>
+					  <a href="myorders.html">My Orders</a>
+					  <a href="profile.html">Profile</a>
+					</div>
+			</ul>
+		</div>
+
+        <div id="mobile">
+			<i id="bar" class="fas fa-outdent"></i>
+		</div>
+    </section>
+<div class="profile">
+    <h2>User Profile</h2>
+    <form id="profileForm">
+        <input type="text" placeholder="Name" name="name" required><br>
+        <input type="tel" placeholder="Phone Number" name="phoneNumber" required><br>
+        <input type="email" placeholder="Email" name="email" required><br>
+        <input type="text" placeholder="Address" name="address" required><br>
+        <button type="submit">Save Profile</button>
+    </form>
+    <p id="successMessage" style="display: none; color: green;">Profile updated successfully!</p>
+</div>
+
+<script>
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Code to save the profile goes here
+
+        // Display success message
+        var successMessage = document.getElementById('successMessage');
+        successMessage.style.display = 'block';
+
+        // Hide the success message after 3 seconds
+        setTimeout(function() {
+            successMessage.style.display = 'none';
+        }, 3000);
+    });
+</script>
+
+<p><br></p>
+<footer class="section-p1" style="margin-top: 240px;">
+    
+    <div class="col">
+        <h4>Contact</h4>
+        <p><strong>Adress:</strong>532 MG Road, Street 29, Bengaluru </p>
+        <p><strong>Phone:</strong>08198-229312/(+91)93xxxxx785</p>
+        <p><strong>Hours:</strong>8:00 - 20:00 Mon-Sat</p>
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">Help</a>
+    </div>
+    <div class="copyright">
+        <hr><hr>
+        <br>
+        <p>&copy; Copyright 2023, Devdar Sweets</p>
+    </div>
+</footer>
+<!-- 00000000000000000000000000000000000000000000000000 -->
+
+<script>
+
+const bar = document.getElementById('bar');
+const close = document.getElementById('close');
+const nav = document.getElementById('navbar');
+
+if(bar) {
+bar.addEventListener('click', () => {
+    nav.classList.add('active');
+})
+}
+
+if(close) {
+close.addEventListener('click', () => {
+    nav.classList.remove('active')
+})
+}
+</script>
+
+<script>
+    let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+    
+    let GreetHead = document.getElementById('greet');
+    let Navbar = document.getElementById('navbar');
+    let SignoutBtn; // declare SignoutBtn outside functions to access it globally
+    let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+    
+    let Signout = () => {
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        GreetHead.innerText = '';
+        if (SignoutBtn) {
+            SignoutBtn.style.display = 'none'; // hide the sign-out link
+        }
+        // if (CreateAccountLink) {
+        //     CreateAccountLink.innerText = 'Login';
+        //     CreateAccountLink.href = 'login.html';
+        //     CreateAccountLink.style.display = 'block'; // display the create account link
+        //     CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+        // }
+    }
+    
+    let CheckCred = () => {
+        if (UserCreds) {
+            GreetHead.innerText = `Hii ${UserInfo.username}!  `;
+            const navbarItem = document.createElement('li');
+    
+            // Sign out link
+            SignoutBtn = document.createElement('a');
+            SignoutBtn.href = 'index.html';
+            SignoutBtn.innerText = 'Sign Out';
+            SignoutBtn.onclick = Signout;
+            SignoutBtn.classList.add('navbar-link'); 
+            navbarItem.appendChild(SignoutBtn);
+    
+            // Create account link
+            CreateAccountLink = document.createElement('a');
+            CreateAccountLink.style.display = 'none'; 
+            CreateAccountLink.classList.add('navbar-link'); 
+            Navbar.appendChild(navbarItem);
+            Navbar.appendChild(CreateAccountLink);
+        } else {
+            CreateAccountLink = document.createElement('a');
+            CreateAccountLink.href = 'login.html'; 
+            CreateAccountLink.innerText = 'Login';
+            CreateAccountLink.classList.add('navbar-link');
+            Navbar.appendChild(CreateAccountLink);
+         }
+    };
+    
+    window.addEventListener('load', CheckCred);
+    </script>
+
+</body>
+</html>
