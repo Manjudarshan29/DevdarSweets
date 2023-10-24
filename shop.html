@@ -15,15 +15,22 @@
     <section id="header">
         <a href="#" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
         <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <h4 id="greet" class="user-greeting"></h4>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+			<ul id="navbar">
+				<li><a href="index.html">Home</a></li>
+				<li><a class="active" href="shop.html">Shop</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				
+				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+				<div class="dropdown">
+					<h6 id="greet" class="user-greeting"></h6>
+					<div class="dropdown-content">
+					  <a href="mycart.html">My Cart</a>
+					  <a href="myorders.html">My Orders</a>
+					  <a href="profile.html">Profile</a>
+					</div>
+			</ul>
+		</div>
 
         <div id="mobile">
 			<i id="bar" class="fas fa-outdent"></i>
@@ -94,9 +101,10 @@
         <div class="checkOut">
             <div class="total1">Total</div>
             <div class="total">0</div>
-            <input type="button" value="Checkout" href="cod.html">
+            <input type="button" value="Checkout">
         </div>
     </div>
+    <br>
 
     <!-- Footer Section -->
     <footer class="section-p1">
@@ -135,6 +143,29 @@
             <p>&copy; 2023, Devdar Sweets</p>
         </div>
     </footer>
+
+
+<!-- the function of checkout page -->
+<script>
+let checkoutButton = document.querySelector('.checkOut input[type="button"]');
+
+checkoutButton.onclick = function() {
+    // Check if the user is logged in
+    let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+
+    if (!userCreds) {
+        // If the user is not logged in, redirect to the login page
+        window.location.href = "login.html";
+    } else {
+        // If the user is logged in, proceed with the checkout process
+        // ... (existing functionality for checkout)
+        window.location.href="mycart.html";
+    }
+};
+</script>
+
+
+
 
 <script >
     const bar = document.getElementById('bar');
@@ -379,7 +410,14 @@ function applyFilter() {
     };
 
     window.addEventListener('load', CheckCred);
+
 </script>
+
+
+<!-- for making after clicking chckout button here then mycart page items are visible -->
+
+
+
 </body>
 
 </html>
