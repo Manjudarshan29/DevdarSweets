@@ -158,20 +158,23 @@ document.body.appendChild(button);
         var message = document.createElement("p");
         message.textContent = 'No items in the cart. Please add items to the cart.';
         message.style.padding = "15px";
-message.style.backgroundColor = "#f8d7da";
-message.style.textAlign="center"
-message.style.border = "1px solid #f5c6cb";
-message.style.borderRadius = "5px";
-message.style.color = "#721c24";
-message.style.marginTop = "20px";
+    message.style.backgroundColor = "#f8d7da";
+    message.style.textAlign="center"
+    message.style.border = "1px solid #f5c6cb";
+    message.style.borderRadius = "5px";
+    message.style.color = "#721c24";
+    message.style.marginTop = "20px";
         document.getElementById('content').appendChild(message);
     } else {
         // Add My Orders button only if there are items in the cart
         var myOrdersButton = document.createElement("button");
-        myOrdersButton.innerHTML = '<a href="myorders.html" style="text-decoration: none; color: white;">My Orders</a>';
+        myOrdersButton.innerHTML = '<p style="text-decoration: none; color: white;text-align:center;">My Orders</p>';
         myOrdersButton.classList.add("button", "my-orders-button");
+        myOrdersButton.style.height="40px";
+        myOrdersButton.style.width="142px";
         myOrdersButton.onclick = function () {
             // Add your functionality here
+            window.location.href = "myorders.html"
             console.log("View My Orders");
         };
         document.body.appendChild(myOrdersButton);
@@ -230,7 +233,7 @@ let Signout = () => {
 
 let CheckCred = () => {
     if (UserCreds) {
-        GreetHead.innerText = `Hii ${UserInfo.username}!  `;
+        GreetHead.innerText = `${UserInfo.username} `;
         const navbarItem = document.createElement('li');
 
         // Sign out link

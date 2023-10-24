@@ -210,10 +210,10 @@
         const login_password = document.getElementById('login_password');
         const mainForm = document.getElementById('MainForm');
 
+        let redirectUrl = sessionStorage.getItem("redirectUrl"); // Retrieve the stored redirectUrl from sessionStorage
 
-        let SignInUser = evt => {
+let SignInUser = evt => {
     evt.preventDefault();
-    let redirectUrl = document.referrer; // Store the URL of the current page
     signInWithEmailAndPassword(auth, login_email.value, login_password.value)
         .then((credentials) => {
             get(child(dbref, 'Devdar customer info-->' + credentials.user.uid)).then((snapshot) => {
@@ -223,8 +223,9 @@
                         username: userData.username, // Change this to the username field from your database
                     }));
                     sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                    // Redirect the user to the stored URL
-                    window.location.href = redirectUrl;
+
+                    // Redirect the user to the stored URL or the home page if redirectUrl is not set
+                    window.location.href = redirectUrl || 'index.html';
                 }
             });
         })

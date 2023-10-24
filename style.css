@@ -236,16 +236,19 @@ body{
     border: 1px solid #cce7d0;
     border-radius: 4px;
     margin: 15px 0;
+    transition: all 0.4s ease;
 }
 
 #feature .fe-box:hover{
     box-shadow: 10px 10px 54px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 #feature .fe-box img{
     width: 100%;
     margin-bottom: 10px;
 }
+
 
 #feature .fe-box h6{
     display: inline-block;
@@ -422,6 +425,35 @@ footer .copyright{
 }
 
 /* about page */
+/* styles of text */
+#page-header.about-header{
+    background-image: url(images/backg.jpg);
+    background-size: cover;
+    width: 100%;
+    
+}
+#page-header h2{
+    background-color: rgba(16, 0, 0, 0.404); 
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+#page-header h2:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+#page-header h3{
+    background-color: rgba(16, 0, 0, 0.404); 
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+#page-header h3:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 
 #page-header.about-header{
     background-image: url(images/backg.jpg);
@@ -435,10 +467,15 @@ footer .copyright{
 }
 
 #about-head img{
-    width: 50%;
+    width: 40%;
     height: auto;
+    transition: all 0.4s ease;
+    border-radius: 10px;
+    border-style:groove;
 }
-
+#about-head img:hover{
+    transform: scale(1.05);
+}
 #about-head div{
     padding-left: 40px;
 }
@@ -491,49 +528,23 @@ footer .copyright{
 
 #form-details{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 30px;
     padding: 80px;
     border: 1px solid #088178;
 }
-#form-details form{
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-#form-details form input,
-#form-details form textarea{
-    width: 100%;
-    padding: 12px 15px;
-    outline: none;
-    margin-bottom: 20px;
-    border: 1px solid #b08d8d;
-}
-#form-details form button{
-    background-color: #0512ff;
-    color: #fff;
-    width: 20%;
-    height: 40px;
-    align-items: flex-start;
-    border-radius: 3px;
+
+#form-details input, textarea{
+    padding: 20px;
+    margin-top: 10px;
 }
 
-#form-details .people div{
-    padding-bottom: 25px;
-}
-
-#form-details .people div p{
-    margin: 0;
-    font-size: 13px;
-    line-height: 25px;
-}
-
-#form-details .people p span{
-    display: block;
-    font-size: 16px;
-    font-weight: 600;
-    color: #222;
+#form-details button{
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: blueviolet;
+    padding: 10px;
+    cursor: pointer;
 }
 
 
