@@ -21,12 +21,19 @@
 		<a href="index.html" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
 		<div>
 			<ul id="navbar">
-				<li><a href="index.html">Home</a></li>
+				<li><a  href="index.html">Home</a></li>
 				<li><a href="shop.html">Shop</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a class="active" href="contact.html">Contact</a></li>
-                <h5 id="greet" class="user-greeting"></h5>
+				
 				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+				<div class="dropdown">
+					<h6 id="greet" class="user-greeting"></h6>
+					<div class="dropdown-content">
+					  <a href="mycart.html">My Cart</a>
+					  <a href="myorders.html">My Orders</a>
+					  <a href="profile.html">Profile</a>
+					</div>
 			</ul>
 		</div>
 		<div id="mobile">
@@ -35,7 +42,7 @@
 	</section>
 	<section id="page-header" class="about-header">
 		<h2 style="color: #fff;">Let's Talk</h2>
-		<p style="color: #fff;">Let's connect with us to explore more</p>
+		<h3 style="color: #fff;">Let's connect with each other to explore more</h3>
 	</section>
     <section id="contact-details" class="section-p1">
         <div class="details">
@@ -67,7 +74,7 @@
     </section>
     <section id="form-details">
             <span>LEAVE A MESSAGE</span>
-            <h2>We love to hear from you</h2>
+            <h2>We'd love to hear from you</h2>
             <input type="text" id="name" placeholder="Enter your name..">
             <input type="email" id="email" placeholder="Enter your email..">
             <textarea id="message" rows="3" placeholder="Enter your message.."></textarea>
@@ -180,7 +187,7 @@
         
             let CheckCred = () => {
                 if (UserCreds) {
-                    GreetHead.innerText = `Hii ${UserInfo.username}!  `;
+                    GreetHead.innerText = `${UserInfo.username} `;
                     const navbarItem = document.createElement('li');
         
                     // Sign out link
