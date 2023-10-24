@@ -212,28 +212,30 @@
 
 
         let SignInUser = evt => {
-            evt.preventDefault();
-            signInWithEmailAndPassword(auth, login_email.value, login_password.value)
-                .then((credentials) => {
-                    get(child(dbref, 'Devdar customer info-->' + credentials.user.uid)).then((snapshot) => {
-                        if (snapshot.exists) {
-                            const userData = snapshot.val();
-                            sessionStorage.setItem("user-info", JSON.stringify({
-                                username: userData.username, // Change this to the username field from your database
-                            }));
-                            sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                            window.location.href = "index.html";
-                        }
-                    });
+    evt.preventDefault();
+    let redirectUrl = document.referrer; // Store the URL of the current page
+    signInWithEmailAndPassword(auth, login_email.value, login_password.value)
+        .then((credentials) => {
+            get(child(dbref, 'Devdar customer info-->' + credentials.user.uid)).then((snapshot) => {
+                if (snapshot.exists) {
+                    const userData = snapshot.val();
+                    sessionStorage.setItem("user-info", JSON.stringify({
+                        username: userData.username, // Change this to the username field from your database
+                    }));
+                    sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                    // Redirect the user to the stored URL
+                    window.location.href = redirectUrl;
+                }
+            });
+        })
+        .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+        });
+};
 
-                })
-                .catch((error) => {
-                    alert(error.message);
-                    console.log(error.code);
-                    console.log(error.message);
-                });
-        };
-        mainForm.addEventListener('submit', SignInUser);
+mainForm.addEventListener('submit', SignInUser);
     </script>
 </body>
 

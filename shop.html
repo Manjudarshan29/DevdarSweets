@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shop</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,15 +15,22 @@
     <section id="header">
         <a href="#" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
         <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <h4 id="greet" class="user-greeting"></h4>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+			<ul id="navbar">
+				<li><a href="index.html">Home</a></li>
+				<li><a class="active" href="shop.html">Shop</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				
+				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+				<div class="dropdown">
+					<h6 id="greet" class="user-greeting"></h6>
+					<div class="dropdown-content">
+					  <a href="mycart.html">My Cart</a>
+					  <a href="myorders.html">My Orders</a>
+					  <a href="profile.html">Profile</a>
+					</div>
+			</ul>
+		</div>
 
         <div id="mobile">
 			<i id="bar" class="fas fa-outdent"></i>
@@ -40,15 +48,47 @@
     </section>
     <section id="page-header">
         <h2>Super value offers</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
+        <p>Indulge your senses in a world of confectionery wonders. </p>
     </section>
     <section id="filter">
-    <div id="price-filter">
-        <label for="price-range">Price Range: </label>
-        <input type="number" id="min-price" placeholder="Min Price">
-        <input type="number" id="max-price" placeholder="Max Price">
-        <button id="filter-button">Filter</button>
-    </div>
+        <div id="price-filter">
+            <label for="price-range">Price Range: </label>
+            <select name="min-price" id="min-price">
+                <option value="Min-price">Minimum-Price</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
+
+            </select>
+            <select name="max-price" id="max-price">
+                <option value="Max-price">Maximum-Price</option>
+
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
+                <option value="1100">1100</option>
+                <option value="1200">1200</option>
+                <option value="1300">1300</option>
+                <option value="1400">1400</option>
+                <option value="1500">1500</option>
+                <option value="1600">1600</option>
+                <option value="1700">1700</option>
+                <option value="1800">1800</option>
+                <option value="1900">1900</option>
+                <option value="2000">2000</option>
+            </select>
+            <button id="filter-button">Filter</button>
+        </div>        
     </section>
     <div class="list">
         <!-- JavaScript will add products dynamically here -->
@@ -61,9 +101,10 @@
         <div class="checkOut">
             <div class="total1">Total</div>
             <div class="total">0</div>
-            <input type="button" value="Checkout" href="cod.html">
+            <input type="button" value="Checkout">
         </div>
     </div>
+    <br>
 
     <!-- Footer Section -->
     <footer class="section-p1">
@@ -102,6 +143,29 @@
             <p>&copy; 2023, Devdar Sweets</p>
         </div>
     </footer>
+
+
+<!-- the function of checkout page -->
+<script>
+let checkoutButton = document.querySelector('.checkOut input[type="button"]');
+
+checkoutButton.onclick = function() {
+    // Check if the user is logged in
+    let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+
+    if (!userCreds) {
+        // If the user is not logged in, redirect to the login page
+        window.location.href = "login.html";
+    } else {
+        // If the user is logged in, proceed with the checkout process
+        // ... (existing functionality for checkout)
+        window.location.href="mycart.html";
+    }
+};
+</script>
+
+
+
 
 <script >
     const bar = document.getElementById('bar');
@@ -195,7 +259,7 @@ function initApp() {
         newDiv.innerHTML = `
             <img src="${value.image}">
             <div class="title">${value.name}</div>
-            <div class="price">${value.price.toLocaleString()}</div>
+            <div class="price">RS. ${value.price.toLocaleString()} /KG </div>
             <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     });
@@ -265,9 +329,8 @@ function changeQuantity(key, quantity) {
         });
 
 </script>
-<!-- username display -->
-<script>
 
+<script>
 const filterButton = document.getElementById('filter-button');
 filterButton.addEventListener('click', applyFilter);
 
@@ -288,7 +351,7 @@ function applyFilter() {
         newDiv.innerHTML = `
             <img src="${product.image}">
             <div class="title">${product.name}</div>
-            <div class="price">${product.price.toLocaleString()}</div>
+            <div class="price">RS. ${product.price.toLocaleString()} /KG </div>
             <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     });
@@ -300,15 +363,15 @@ function applyFilter() {
 
     let GreetHead = document.getElementById('greet');
     let Navbar = document.getElementById('navbar');
-    let SignoutBtn; // declare SignoutBtn outside functions to access it globally
-    let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+    let SignoutBtn; 
+    let CreateAccountLink; 
 
     let Signout = () => {
         sessionStorage.removeItem("user-creds");
         sessionStorage.removeItem("user-info");
         GreetHead.innerText = '';
         if (SignoutBtn) {
-            SignoutBtn.style.display = 'none'; // hide the sign-out link
+            SignoutBtn.style.display = 'none'; 
         }
         if (CreateAccountLink) {
             CreateAccountLink.innerText = 'Login';
@@ -347,11 +410,14 @@ function applyFilter() {
     };
 
     window.addEventListener('load', CheckCred);
+
 </script>
-<script>
-    
-</script>
-<!-- ------------------------------------- -->
+
+
+<!-- for making after clicking chckout button here then mycart page items are visible -->
+
+
+
 </body>
 
 </html>

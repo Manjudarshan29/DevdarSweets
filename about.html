@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>E-commerce website</title>
+	<title>About</title>
+	<link rel="icon" href="images/icon.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -12,12 +13,19 @@
 		<a href="index.html" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
 		<div>
 			<ul id="navbar">
-				<li><a href="index.html">Home</a></li>
+				<li><a  href="index.html">Home</a></li>
 				<li><a href="shop.html">Shop</a></li>
 				<li><a class="active" href="about.html">About</a></li>
 				<li><a href="contact.html">Contact</a></li>
-				<h4 id="greet" class="user-greeting"></h4>
+				
 				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+				<div class="dropdown">
+					<h6 id="greet" class="user-greeting"></h6>
+					<div class="dropdown-content">
+					  <a href="mycart.html">My Cart</a>
+					  <a href="myorders.html">My Orders</a>
+					  <a href="profile.html">Profile</a>
+					</div>
 			</ul>
 		</div>
 		<div id="mobile">
@@ -25,17 +33,16 @@
 		</div>
 	</section>
 	<section id="page-header" class="about-header">
-		<h2 style="color: #fff;">Know Us</h2>
-		<p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, non tempore.</p>
+		<h2 style="color: #00ff00;">The taste of INDIA</h2>
+		<h3 style="color: #50fd00;">Quality that delights, In every bite.</h3>
 	</section>
     <section id="about-head" class="section-p1">
-        <img src="https://indianewsnet.com/wp-content/uploads/2020/09/26_02_2020-sweet_20063967.jpg" alt="">
+        <img src="images/about.jpg" alt="">
         <div>
-            <h2>Who we are? </h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque possimus omnis esse quam? Necessitatibus, reprehenderit aspernatur! Repudiandae labore fugiat totam suscipit incidunt modi. Nesciunt at laudantium excepturi? Tempora, asperiores dicta.</p>
-            <abbr title="">explicabo eligendi. Expedita nemo veniam ipsa officiis?</abbr>
-            <br><br>
-            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem rem molestiae at laboriosam voluptas l</marquee>
+            <h2>DevDar Sweets</h2>
+            <p>We take immense pride in sharing the rich and diverse flavors of South India with the world. Our journey is a sweet adventure that we've embarked upon, rooted in tradition, and flavored with innovation. We're more than just a sweet company; we're the bearers of a cultural legacy, and we're excited to tell you our story.</p>
+			<p>We are delighted to celebrate a decade of serving you with the sweet flavors of South India! It's been an incredible journey, and we are proud to share this milestone with you. Over the past 10 years, our South Indian sweet company has been dedicated to bringing you the authentic taste of this vibrant and diverse region's rich culinary traditions.</p>
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%" >Join us in celebrating the sweetness of life, one sweet at a time, and discover the soul of South Indian sweets with Southern Delights. </marquee>
         </div>
     </section>
     <section id="feature" class="section-p1">
@@ -48,7 +55,7 @@
 			<h6>Save Money</h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://safoodbank.org/wp-content/uploads/2018/05/Vegetarian-Icon.png" height="100">
+			<img src="images/f4.png" height="100">
 			<h6>100% Vegetarion</h6>
 		</div>
 		<div class="fe-box">
@@ -56,11 +63,11 @@
 			<h6>Happy Customers</h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://cdn-icons-png.flaticon.com/128/3082/3082101.png" height="100">
+			<img src="images/f6.png" height="100">
 			<h6>Hygienic </h6>
 		</div>
 		<div class="fe-box">
-			<img src="https://tshirtsandallstore.com/wp-content/uploads/2020/02/pick-up-in-store.jpg" height="100">
+			<img src="images/f7.jpg" height="100">
 			<h6>In-store pickup</h6>
 		</div>
 	</section>
@@ -127,8 +134,8 @@
     
         let GreetHead = document.getElementById('greet');
         let Navbar = document.getElementById('navbar');
-        let SignoutBtn; // declare SignoutBtn outside functions to access it globally
-        let CreateAccountLink; // declare CreateAccountLink outside functions to access it globally
+        let SignoutBtn; 
+        let CreateAccountLink; 
     
         let Signout = () => {
             sessionStorage.removeItem("user-creds");
@@ -140,8 +147,8 @@
             if (CreateAccountLink) {
                 CreateAccountLink.innerText = 'Login';
                 CreateAccountLink.href = 'login.html';
-                CreateAccountLink.style.display = 'block'; // display the create account link
-                CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                CreateAccountLink.style.display = 'block'; 
+                CreateAccountLink.classList.add('navbar-link'); 
             }
         }
     
@@ -152,23 +159,23 @@
     
                 // Sign out link
                 SignoutBtn = document.createElement('a');
-                SignoutBtn.href = '#'; // replace with the appropriate link
+                SignoutBtn.href = '#'; 
                 SignoutBtn.innerText = 'Sign Out';
                 SignoutBtn.onclick = Signout;
-                SignoutBtn.classList.add('navbar-link'); // add the appropriate class for styling
+                SignoutBtn.classList.add('navbar-link'); 
                 navbarItem.appendChild(SignoutBtn);
     
                 // Create account link
                 CreateAccountLink = document.createElement('a');
-                CreateAccountLink.style.display = 'none'; // hide the link by default
-                CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                CreateAccountLink.style.display = 'none'; 
+                CreateAccountLink.classList.add('navbar-link'); 
                 Navbar.appendChild(navbarItem);
                 Navbar.appendChild(CreateAccountLink);
             } else {
                 CreateAccountLink = document.createElement('a');
-                CreateAccountLink.href = 'login.html'; // Replace with the appropriate link
+                CreateAccountLink.href = 'login.html'; 
                 CreateAccountLink.innerText = 'Login';
-                CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
+                CreateAccountLink.classList.add('navbar-link'); 
                 Navbar.appendChild(CreateAccountLink);
             }
         };
