@@ -6,6 +6,21 @@
     font-family: 'Spartan', sans-serif;
 }
 
+.username {
+    cursor: pointer;
+    position: relative;
+    /* left: 21px; */
+    color: blue;
+    font-size: 20px;
+}
+.CreateAccountLink1 {
+    position: relative;
+   right:20px;
+}
+.CreateAccountLink {
+    position: relative;
+   left:20px;
+}
 /* for dropdown menu */
 .dropdown {
     position: relative;
@@ -19,6 +34,9 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 20px;
+    margin-left:-5px;
+    margin-top: 2px;
   }
   
   .dropdown-content a {
@@ -219,7 +237,10 @@ body{
     cursor: pointer;
     font-weight: 700;
     font-size: 15px;
-    
+    transition: all 0.2s ease;
+}
+#hero button:hover{
+    transform: scale(1.05);
 }
 
 #feature{

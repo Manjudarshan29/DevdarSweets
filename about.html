@@ -174,7 +174,8 @@
                 Navbar.appendChild(CreateAccountLink);
             } else {
                 CreateAccountLink = document.createElement('a');
-                CreateAccountLink.href = 'login.html'; 
+                CreateAccountLink.href = 'login.html';
+				CreateAccountLink.classList.add('CreateAccountLink');  //login button at the time u have not logged in 
                 CreateAccountLink.innerText = 'Login';
                 CreateAccountLink.classList.add('navbar-link'); 
                 Navbar.appendChild(CreateAccountLink);
