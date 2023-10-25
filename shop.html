@@ -374,6 +374,7 @@ function applyFilter() {
             SignoutBtn.style.display = 'none'; 
         }
         if (CreateAccountLink) {
+            CreateAccountLink.classList.add('CreateAccountLink1');  //class for CreateAccountLink after signout
             CreateAccountLink.innerText = 'Login';
             CreateAccountLink.href = 'login.html';
             CreateAccountLink.style.display = 'block'; 

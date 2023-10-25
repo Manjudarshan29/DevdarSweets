@@ -145,6 +145,7 @@
                 SignoutBtn.style.display = 'none'; // hide the sign-out link
             }
             if (CreateAccountLink) {
+				CreateAccountLink.classList.add('CreateAccountLink1');  //class for CreateAccountLink after signout
                 CreateAccountLink.innerText = 'Login';
                 CreateAccountLink.href = 'login.html';
                 CreateAccountLink.style.display = 'block'; 
