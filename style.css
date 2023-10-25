@@ -773,6 +773,32 @@ footer .copyright{
 }
 
 @media (max-width: 477px){
+    .dropdown-content {
+        border-radius: 20px;
+        margin-left: 20.8px;
+        
+     }
+    .signout{
+        position: relative;
+        top:22px;
+    }
+    .username {
+        position: relative;
+        left: 21px;
+        color: blue;
+        font-size: 20px;
+    }
+    .CreateAccountLink {
+        position: relative;
+        left: 20px;
+    
+        }
+        
+        .CreateAccountLink1 {
+            position: relative;
+            left: 20px;
+            bottom: 24px;
+        }
     .section-p1{
         padding: 20px;
     }
