@@ -13,54 +13,6 @@
 			background-color: #e6e6e6;
 		}
 
-		.orders-section {
-			margin-top: 30px;
-			text-align: center;
-			background-color: #f4f4f4;
-			padding: 20px;
-			border-radius: 10px;
-		}
-
-		.order-box {
-			margin-bottom: 20px;
-			border: 1px solid #ddd;
-			border-radius: 5px;
-			background-color: #f9f9f9;
-			padding: 10px;
-		}
-
-		.total-price {
-			font-size: 20px;
-			font-weight: bold;
-			margin-top: 20px;
-			padding: 10px;
-			border: 1px solid #ddd;
-			border-radius: 5px;
-			background-color: #f9f9f9;
-			display: inline-block; /* To limit the background to the content width */
-		}
-
-		.item-details {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 10px;
-		}
-
-		.item-details div {
-			flex: 1;
-		}
-
-		.order-header {
-			font-size: 24px;
-			font-weight: bold;
-			margin-bottom: 10px;
-			background-color: aqua;
-			text-align: left;
-			padding: 10px;
-			border-radius: 5px;
-		}
-
 		.card {
 			display: flex;
 			align-items: center;
@@ -287,6 +239,7 @@ close.addEventListener('click', () => {
     
     let CheckCred = () => {
         if (UserCreds) {
+			GreetHead.classList.add('username');
             GreetHead.innerText = ` ${UserInfo.username} `;
             const navbarItem = document.createElement('li');
     

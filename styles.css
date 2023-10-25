@@ -7,6 +7,38 @@
     font-family: 'Spartan', sans-serif;
     scroll-behavior: smooth;
 }
+.username {
+    cursor: pointer;
+    position: relative;
+    /* left: 21px; */
+    color: blue;
+    font-size: 20px;
+}
+.CreateAccountLink1 {
+    position: relative;
+   right:20px;
+}
+.CreateAccountLink {
+    position: relative;
+   left:20px;
+}
+/* for dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 20px;
+    margin-left:-5px;
+    margin-top: 2px;
+  }
 #add{
     transition: all 0.3s ease;
     cursor: pointer;

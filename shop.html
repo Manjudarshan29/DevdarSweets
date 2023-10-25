@@ -384,6 +384,7 @@ function applyFilter() {
 
     let CheckCred = () => {
         if (UserCreds) {
+            GreetHead.classList.add('username');
             GreetHead.innerText = `${UserInfo.username}`;
             const navbarItem = document.createElement('li');
 

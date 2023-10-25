@@ -40,17 +40,6 @@
             background-color: #45a049;
         }
 
-        .my-orders-button {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .success-message {
-            margin-top: 20px;
-            text-align: center;
-            color: green;
-        }
     </style>
 </head>
 <body>
@@ -233,6 +222,7 @@ let Signout = () => {
 
 let CheckCred = () => {
     if (UserCreds) {
+        GreetHead.classList.add('username');
         GreetHead.innerText = `${UserInfo.username} `;
         const navbarItem = document.createElement('li');
 
