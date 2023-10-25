@@ -297,7 +297,6 @@ list-style: none;
     
 }
 
-
 .card .checkOut {
     position: relative;
     bottom: 0;
@@ -517,7 +516,6 @@ footer .copyright {
     }
     .list .item {
         width: 80%;
-        border-radius: 8px;
         padding: 15px;
         position: relative;
         left: 40px;
@@ -525,16 +523,21 @@ footer .copyright {
     }
 
     .card {
-        position: fixed;
-        top: 45px;
-        left: 100%;
-        width: 500px;
-        height: 90vh;
+        top: 48px;
+        width: 400px;
+        height: 100vh;
+    }
+    .active .card {
+        left: calc(100% - 410px);
+    }
+    .closeShopping{
+        left: 320px;
     }
 
-    /* #filter {
+    #filter #price-filter{
         display: flex;
-        gap: 100px;
         flex-direction: column;
-    } */
+        align-items: center;
+        gap: 5px;
+    }
 }
