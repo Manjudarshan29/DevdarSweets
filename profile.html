@@ -55,9 +55,11 @@
     </form>
     <p id="successMessage" style="display: none; color: green;">Profile updated successfully!</p>
 </div>
+
+
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyAgWVPZGPzaHoxDuSeWWDrDtcOcyeiWt_k",
@@ -75,31 +77,60 @@
 
     let save = document.getElementById("save");
 
-    save.addEventListener("click", async () => {
+    save.addEventListener("click", async (event) => {
+        event.preventDefault(); // Prevent the form from being submitted
+
         let Name = document.getElementById("name").value;
-        let mobile = document.getElementById("mobile1").value;
+        let mobile2 = document.getElementById("mobile1").value;
         let email = document.getElementById("email").value;
         let address = document.getElementById("address").value;
         let pincode = document.getElementById("pincode").value;
 
-        const ref = collection(db, "TheTeachersList");
+        const usersRef = collection(db, 'TheTeachersList');
+        const q = query(usersRef, where('Email', '==', email));
+        const querySnapshot = await getDocs(q);
+        let docExists = false;
 
-        try {
-            const docRef = await addDoc(ref, {
-                Name: Name,
-                Mobile_Number: mobile,
-                Email: email,
-                Address: address,
-                Pincode: pincode
-            });
-            console.log("Document written with ID: ", docRef.id);
-            alert("Data added successfully");
-        } catch (error) {
-            console.error("Error adding document: ", error);
-            alert("Unsuccessful operation, error: " + error);
+        querySnapshot.forEach(async (doc) => {
+            docExists = true;
+            try {
+                await updateDoc(doc.ref, {
+                    Name: Name,
+                    Mobile_Number: mobile2,
+                    Email: email,
+                    Address: address,
+                    Pincode: pincode
+                });
+                console.log("Document updated with ID: ", doc.id);
+                alert("Data updated successfully");
+            } catch (error) {
+                console.error("Error updating document: ", error);
+                alert("Unsuccessful operation, error: " + error);
+            }
+        });
+
+        if (!docExists) {
+            try {
+                const docRef = await addDoc(usersRef, {
+                    Name: Name,
+                    Mobile_Number: mobile2,
+                    Email: email,
+                    Address: address,
+                    Pincode: pincode
+                });
+                console.log("New document added with ID: ", docRef.id);
+                alert("Data added successfully");
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("Unsuccessful operation, error: " + error);
+            }
         }
     });
 </script>
+
+
+
+
 
 
 
