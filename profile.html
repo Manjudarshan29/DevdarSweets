@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My profile</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/1ff2bafd28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -26,7 +28,6 @@
 				<li><a href="shop.html">Shop</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a  href="contact.html">Contact</a></li>
-				
 				<a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
 				<div class="dropdown">
 					<h6 id="greet" class="user-greeting"></h6>
@@ -34,7 +35,7 @@
 					  <a href="mycart.html">My Cart</a>
 					  <a href="myorders.html">My Orders</a>
 					  <a href="profile.html">Profile</a>
-					</div>
+				</div>
 			</ul>
 		</div>
 		<div id="mobile">
@@ -154,12 +155,6 @@
             if (SignoutBtn) {
                 SignoutBtn.style.display = 'none'; // hide the sign-out link
             }
-            if (CreateAccountLink) {
-                CreateAccountLink.innerText = 'Login';
-                CreateAccountLink.href = 'login.html';
-                CreateAccountLink.style.display = 'block'; // display the create account link
-                CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
-            }
         }
     
         let CheckCred = () => {
@@ -183,13 +178,8 @@
                 CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
                 Navbar.appendChild(navbarItem);
                 Navbar.appendChild(CreateAccountLink);
-            } else {
-                CreateAccountLink = document.createElement('a');
-                CreateAccountLink.href = 'login.html'; // Replace with the appropriate link
-                CreateAccountLink.innerText = 'Login';
-                CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
-                Navbar.appendChild(CreateAccountLink);
             }
+            
         };
     
         window.addEventListener('load', CheckCred);
