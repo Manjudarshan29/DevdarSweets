@@ -71,75 +71,58 @@
 
 
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			var orderCounter = parseInt(localStorage.getItem('orderCounter')) || 1;
-			var orderDetails = JSON.parse(sessionStorage.getItem('orderDetails')) || [];
-			var ordersListDiv = document.getElementById('ordersList');
-			var orderItems = '';
-	
-			if (orderDetails.length === 0) {
-				ordersListDiv.innerHTML = "<p>You need to first add items to your cart.</p>";
-				document.getElementById('orderHeader').style.display = 'none';
-			} else {
-				// orderDetails.forEach(item => {
-				// 	var itemTotalPrice = parseFloat(item.price) * item.quantity;
-				// 	orderItems += `
-				// 		<div class="card">
-				// 			<img src="${item.image}" alt="${item.name}">
-				// 			<div>
-				// 				<p><strong>Name:</strong> ${item.name}</p>
-				// 				<p><strong>Price:</strong> ${item.price}</p>
-				// 				<p><strong>Quantity:</strong> ${item.quantity}</p>
-				// 			</div>
-				// 		</div>`;
-				// });
-	
-				var randomId = `ORDER${orderCounter}`;
-				var date = new Date();
-				var orderDateTime = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-	
-				// Check if the order already exists in localStorage
-				if (!localStorage.getItem(randomId)) {
-					// Store the confirmed order in localStorage
-					localStorage.setItem(randomId, JSON.stringify({
-						orderDetails: orderDetails,
-						orderDateTime: orderDateTime
-					}));
+       document.addEventListener('DOMContentLoaded', function () {
+        var orderCounter = localStorage.getItem('orderCounter') ? parseInt(localStorage.getItem('orderCounter')) : 1;
+        var orderDetails = JSON.parse(sessionStorage.getItem('orderDetails')) || [];
+        var ordersListDiv = document.getElementById('ordersList');
+        var orderItems = '';
+    
 
-				}
-	
-				// Display all confirmed orders on the page
-				for (let i = orderCounter; i >= 1; i--) {
-    var key = `ORDER${i}`;
-    var order = JSON.parse(localStorage.getItem(key));
-    if (order) {
-        var orderDateTime = order.orderDateTime;
-        var orderDetails = order.orderDetails;
-
-        ordersListDiv.innerHTML += `
-            <div class="order-box" >
-                <div>Order #${i} placed on ${orderDateTime}</div>
-                ${orderDetails.map(item => `
-                    <div class="card" >
-                        <img src="${item.image}" alt="${item.name}">
-                        <div>
-                            <p><strong>Name:</strong> ${item.name}</p>
-                            <p><strong>Price:</strong> ${item.price}</p>
-                            <p><strong>Quantity:</strong> ${item.quantity}</p>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    }
-}
-
-// Update the orderCounter in localStorage
-localStorage.setItem('orderCounter', orderCounter.toString());
-
-			}
-		});
-	</script>
+            if (orderDetails.length === 0) {
+                ordersListDiv.innerHTML = "<p>You need to first add items to your cart.</p>";
+                document.getElementById('orderHeader').style.display = 'none';
+            } else {
+                var randomId = `ORDER${orderCounter}`;
+                var date = new Date();
+                var orderDateTime = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    
+                if (!localStorage.getItem(randomId)) {
+                    localStorage.setItem(randomId, JSON.stringify({
+                        orderDetails: orderDetails,
+                        orderDateTime: orderDateTime
+                    }));
+                }
+    
+                for (let i = orderCounter; i >= 1; i--) {
+                    var key = `ORDER${i}`;
+                    var order = JSON.parse(localStorage.getItem(key));
+                    if (order) {
+                        var orderDateTime = order.orderDateTime;
+                        var orderDetails = order.orderDetails;
+    
+                        ordersListDiv.innerHTML += `
+                            <div class="order-box">
+                                <div>Order #${i} placed on ${orderDateTime}</div>
+                                ${orderDetails.map(item => `
+                                    <div class="card">
+                                        <img src="${item.image}" alt="${item.name}">
+                                        <div>
+                                            <p><strong>Name:</strong> ${item.name}</p>
+                                            <p><strong>Price:</strong> ${item.price}</p>
+                                            <p><strong>Quantity:</strong> ${item.quantity}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                }
+    
+                localStorage.setItem('orderCounter', orderCounter.toString());
+            }
+        });
+    </script>
+    
 	
 
 <!-- for user name -->

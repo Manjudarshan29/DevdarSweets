@@ -108,7 +108,7 @@ button.classList.add("button");
 button.onclick = function() {
     // Storing the data in sessionStorage
     sessionStorage.setItem('orderDetails', JSON.stringify(filteredListCards));
-    var orderCounter = parseInt(localStorage.getItem('orderCounter')) || 1; // Get the order counter from localStorage
+    var orderCounter = parseInt(localStorage.getItem('orderCounter')) || 0; // Get the order counter from localStorage
         var orderID = `order${orderCounter}`; // Generate the order ID
         localStorage.setItem(orderID, JSON.stringify(filteredListCards));
          // Increment the order counter
