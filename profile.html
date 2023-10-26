@@ -45,17 +45,62 @@
 
 <div class="profile">
     <h2>Profile</h2>
-    <form id="profileForm">
-        <input type="text" placeholder="Name" name="name" required><br>
-        <input type="tel" placeholder="Mobile Number" name="phoneNumber" required><br>
-        <input type="email" placeholder="Email" name="email" required><br>
-        <input type="text" placeholder="Address" name="address" required><br>
-        <input type="text" placeholder="Pincode" name="pincode" required><br>
-
-        <button type="submit">Save Profile</button>
-    </form>
+    <div id="profileForm">
+        <input type="text" id="name" placeholder="Name" name="name" required><br>
+        <input type="tel" id="mobile1" placeholder="Mobile Number" name="phoneNumber" required><br>
+        <input type="email" id="email" placeholder="Email" name="email" required><br>
+        <input type="text" id="address" placeholder="Address" name="address" required><br>
+        <input type="text" id="pincode" placeholder="Pincode" name="pincode" required><br>
+        <button type="submit" id="save">Save Profile</button>
+    </div>
     <p id="successMessage" style="display: none; color: green;">Profile updated successfully!</p>
 </div>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAgWVPZGPzaHoxDuSeWWDrDtcOcyeiWt_k",
+        authDomain: "devdar-ce8ba.firebaseapp.com",
+        databaseURL: "https://devdar-ce8ba-default-rtdb.firebaseio.com",
+        projectId: "devdar-ce8ba",
+        storageBucket: "devdar-ce8ba.appspot.com",
+        messagingSenderId: "562140767505",
+        appId: "1:562140767505:web:31605600f7c115bf1918b0",
+        measurementId: "G-XSYBG68LKZ"
+        };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let save = document.getElementById("save");
+
+    save.addEventListener("click", async () => {
+        let Name = document.getElementById("name").value;
+        let mobile = document.getElementById("mobile1").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let pincode = document.getElementById("pincode").value;
+
+        const ref = collection(db, "TheTeachersList");
+
+        try {
+            const docRef = await addDoc(ref, {
+                Name: Name,
+                Mobile_Number: mobile,
+                Email: email,
+                Address: address,
+                Pincode: pincode
+            });
+            console.log("Document written with ID: ", docRef.id);
+            alert("Data added successfully");
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            alert("Unsuccessful operation, error: " + error);
+        }
+    });
+</script>
+
 
 
 <footer class="section-p1">
@@ -93,34 +138,7 @@
         <br>
         <p>&copy; Copyright 2023, Devdar Sweets</p>
     </div>
-    
-
 </footer>
-
-<script>
-    function sendMail() {
-        var params = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value,
-        };
-
-    const serviceID = "service_30if6ex";
-    const templateID = "template_22vek18";
-
-    emailjs.send(serviceID, templateID, params)
-    .then(res=>{
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
-        console.log(res);
-        alert("Your message sent successfully!!")
-
-    })
-    .catch(err=>console.log(err));
-
-}
-</script>
 <script>
 
     const bar = document.getElementById('bar');
