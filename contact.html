@@ -199,6 +199,7 @@
                     // Sign out link
                     SignoutBtn = document.createElement('a');
                     SignoutBtn.href = '#'; // replace with the appropriate link
+		    SignoutBtn.classList.add('signout')
                     SignoutBtn.innerText = 'Sign Out';
                     SignoutBtn.onclick = Signout;
                     SignoutBtn.classList.add('navbar-link'); // add the appropriate class for styling

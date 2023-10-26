@@ -33,7 +33,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 20px;
+            margin:10px;
         }
 
         .button:hover {
@@ -229,6 +229,7 @@ let CheckCred = () => {
         // Sign out link
         SignoutBtn = document.createElement('a');
         SignoutBtn.href = 'index.html';
+	SignoutBtn.classList.add('signout')
         SignoutBtn.innerText = 'Sign Out';
         SignoutBtn.onclick = Signout;
         SignoutBtn.classList.add('navbar-link'); 
