@@ -163,6 +163,7 @@
             </div>
             <div class="input-box">
                 <input id="login_password" type="password" placeholder="Enter Password" required />
+                <label id="forgotpasslabel" style="color:white;cursor:pointer; margin-top:5px;;font-size: small; position: relative; left: 30%; top:-3%;">Forgot Password?</label>
                 <!-- <i class="fa fa-fw fa-eye field-icon"></i> -->
             </div>
             <button type="submit" id="login_submit">Login</button>
@@ -183,7 +184,8 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
         import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword ,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+    
 
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -209,7 +211,7 @@
         let login_email = document.getElementById('login_email');
         const login_password = document.getElementById('login_password');
         const mainForm = document.getElementById('MainForm');
-
+        const ForgotPassLabel=document.getElementById("forgotpasslabel");
         let redirectUrl = sessionStorage.getItem("redirectUrl"); // Retrieve the stored redirectUrl from sessionStorage
 
 let SignInUser = evt => {
@@ -234,9 +236,28 @@ let SignInUser = evt => {
             console.log(error.code);
             console.log(error.message);
         });
+        
 };
 
-mainForm.addEventListener('submit', SignInUser);
+
+
+// forgot password
+let ForgotPassword=()=>{
+            sendPasswordResetEmail(auth, login_email.value)
+            .then(()=>{
+                alert("A Password Reset Link has been sent to your email");
+
+            })
+            .catch((error)=>{
+                alert("Failed to send the Password Reset Link");
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        mainForm.addEventListener('submit', SignInUser);
+        ForgotPassLabel.addEventListener("click", ForgotPassword);
+
     </script>
 </body>
 
