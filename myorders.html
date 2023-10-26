@@ -31,7 +31,7 @@
 </head>
 <body>
     <section id="header">
-        <a href="#" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
+        <a href="index.html" class="logo"> <i class="fa-solid fa-cookie-bite"></i> <strong>DEVDAR </strong>Sweets </a>
         <div>
 			<ul id="navbar">
 				<li><a class="active" href="index.html">Home</a></li>
@@ -105,18 +105,7 @@
 						orderDetails: orderDetails,
 						orderDateTime: orderDateTime
 					}));
-	
-					// Display the order details on the page
-					// var orderHeaderDiv = document.getElementById('orderHeader');
-					// orderHeaderDiv.textContent = `Order #${orderCounter} placed on ${orderDateTime} | ID: ${randomId}`;
-	
-					// if (!ordersListDiv.innerHTML.includes(orderItems)) {
-					// 	ordersListDiv.innerHTML += orderItems;
-					// }
-	
-					// var totalPrice = orderDetails.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
-					// var totalPriceDiv = document.getElementById('totalPrice');
-					// totalPriceDiv.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+
 				}
 	
 				// Display all confirmed orders on the page
@@ -229,12 +218,6 @@ close.addEventListener('click', () => {
         if (SignoutBtn) {
             SignoutBtn.style.display = 'none'; // hide the sign-out link
         }
-        // if (CreateAccountLink) {
-        //     CreateAccountLink.innerText = 'Login';
-        //     CreateAccountLink.href = 'login.html';
-        //     CreateAccountLink.style.display = 'block'; // display the create account link
-        //     CreateAccountLink.classList.add('navbar-link'); // add the appropriate class for styling
-        // }
     }
     
     let CheckCred = () => {
