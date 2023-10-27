@@ -95,7 +95,7 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
     import { getFirestore, collection, addDoc, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
@@ -125,7 +125,11 @@
         let pincode = document.getElementById("pincode").value;
 
         if (!Name || !mobile || !email || !address || !pincode) {
-            alert("Please fill in all the fields");
+            Swal.fire({
+            text: 'Please fill in all the fields',
+            icon: 'error'
+        });
+
             return;
         }
 
@@ -145,7 +149,10 @@
                     Pincode: pincode
                 });
                 console.log("Document updated with ID: ", email);
-                alert("Data updated successfully");
+                Swal.fire({
+                text: 'Data updated successfully',
+                icon: 'success'
+                });
                 showMyCartButton(); // Show the "My Cart" button after profile update
             } catch (error) {
                 console.error("Error updating document: ", error);
@@ -163,7 +170,10 @@
                     Pincode: pincode
                 });
                 console.log("New document added with ID: ", email);
-                alert("Data added successfully");
+                Swal.fire({
+                text: 'Data updated successfully',
+                icon: 'success'
+                });
                 showMyCartButton(); // Show the "My Cart" button after profile update
             } catch (error) {
                 console.error("Error adding document: ", error);
