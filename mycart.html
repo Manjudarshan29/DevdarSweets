@@ -223,7 +223,7 @@ let Signout = () => {
 let CheckCred = () => {
     if (UserCreds) {
         GreetHead.classList.add('username');
-        GreetHead.innerText = `${UserInfo.username} `;
+        GreetHead.innerText = `${UserInfo.username} ▼`;
         const navbarItem = document.createElement('li');
 
         // Sign out link
