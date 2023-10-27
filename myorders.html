@@ -69,15 +69,37 @@
 		</div>
 	</div>
 
+ 
+ 
 
-	<script>
-       document.addEventListener('DOMContentLoaded', function () {
-        var orderCounter = localStorage.getItem('orderCounter') ? parseInt(localStorage.getItem('orderCounter')) : 1;
-        var orderDetails = JSON.parse(sessionStorage.getItem('orderDetails')) || [];
-        var ordersListDiv = document.getElementById('ordersList');
-        var orderItems = '';
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var orderCounter = localStorage.getItem('orderCounter') ? parseInt(localStorage.getItem('orderCounter')) : 1;
+            var orderDetails = JSON.parse(sessionStorage.getItem('orderDetails')) || [];
+            var canceledOrders = JSON.parse(localStorage.getItem('canceledOrders')) || [];
+            var ordersListDiv = document.getElementById('ordersList');
+            var orderItems = '';
     
-
+            // Function to cancel order
+            function cancelOrder(event) {
+                var orderId = event.target.getAttribute('data-order-id');
+                var orderBox = document.getElementById(orderId);
+                if (orderBox) {
+                    var cancelMessage = document.createElement('p');
+                    cancelMessage.innerText = 'Order ' + orderId + ' has been canceled.';
+                    orderBox.appendChild(cancelMessage);
+    
+                    // Hide the cancel button after canceling the order
+                    var cancelButton = orderBox.querySelector('button');
+                    if (cancelButton) {
+                        cancelButton.style.display = 'none';
+                    }
+    
+                    canceledOrders.push(orderId);
+                    localStorage.setItem('canceledOrders', JSON.stringify(canceledOrders));
+                }
+            }
+    
             if (orderDetails.length === 0) {
                 ordersListDiv.innerHTML = "<p>You need to first add items to your cart.</p>";
                 document.getElementById('orderHeader').style.display = 'none';
@@ -100,21 +122,42 @@
                         var orderDateTime = order.orderDateTime;
                         var orderDetails = order.orderDetails;
     
-                        ordersListDiv.innerHTML += `
-                            <div class="order-box">
-                                <div>Order #${i} placed on ${orderDateTime}</div>
-                                ${orderDetails.map(item => `
-                                    <div class="card">
-                                        <img src="${item.image}" alt="${item.name}">
-                                        <div>
-                                            <p><strong>Name:</strong> ${item.name}</p>
-                                            <p><strong>Price:</strong> ${item.price}</p>
-                                            <p><strong>Quantity:</strong> ${item.quantity}</p>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        `;
+                        var orderBox = document.createElement('div');
+                        orderBox.className = 'order-box';
+                        orderBox.id = key;
+                        orderBox.innerHTML = `<div>Order #${i} placed on ${orderDateTime}</div>`;
+    
+                        orderDetails.forEach(function (item) {
+                            var card = document.createElement('div');
+                            card.className = 'card';
+                            var img = document.createElement('img');
+                            img.src = item.image;
+                            img.alt = item.name;
+                            var details = document.createElement('div');
+                            details.innerHTML = `<p><strong>Name:</strong> ${item.name}</p>
+                                                <p><strong>Price:</strong> ${item.price}</p>
+                                                <p><strong>Quantity:</strong> ${item.quantity}</p>`;
+                            card.appendChild(img);
+                            card.appendChild(details);
+                            orderBox.appendChild(card);
+                        });
+    
+                        var cancelButton = document.createElement('button');
+                        cancelButton.innerText = 'Cancel Order';
+                        cancelButton.style.marginTop = '10px';
+                        cancelButton.setAttribute('data-order-id', key); // Set the data attribute
+                        cancelButton.onclick = cancelOrder;
+    
+                        orderBox.appendChild(cancelButton);
+                        ordersListDiv.appendChild(orderBox);
+    
+                        // Check if the order has been canceled and display the cancel message
+                        if (canceledOrders.includes(key)) {
+                            var cancelMessage = document.createElement('p');
+                            cancelMessage.innerText = key + ' has been canceled.';
+                            orderBox.appendChild(cancelMessage);
+                            cancelButton.style.display = 'none';
+                        }
                     }
                 }
     
@@ -122,6 +165,17 @@
             }
         });
     </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
 	
 
