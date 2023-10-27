@@ -22,8 +22,8 @@
         margin-top: 20px;
     }
 
-    .submit {
-        display: inline-block;
+    #myCartDiv {
+        /* display: inline-block; */
         background-color: #4CAF50;
         border: none;
         color: white;
@@ -35,14 +35,19 @@
         margin: 4px 2px;
         transition-duration: 0.4s;
         cursor: pointer;
+        text-decoration: none;
     }
 
-    .submit a {
+    #myCartDiv a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+    #myCartDiv a button{
         text-decoration: none;
         color: rgb(255, 255, 255);
     }
 
-    .submit:hover {
+    #myCartDiv:hover {
         background-color: rgb(74, 171, 121);
         border: 2px solid #4CAF50;
     }
@@ -83,17 +88,17 @@
         <input type="text" id="pincode" placeholder="Pincode" name="pincode" required><br>
         <button type="submit" id="save">Save Profile</button>
     </form>
-    <p id="successMessage" style="display: none; color: green;">Profile updated successfully!</p>
+    <div>
+        <a href="mycart.html"><button id="myCartDiv" >mycart</button></a>
+    </div>
 </div>
-<div class="mycart">
-    <button class="submit"><a href="mycart.html">mycart</a></button>
-</div>
+
 
 
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-    import { getFirestore, collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyAgWVPZGPzaHoxDuSeWWDrDtcOcyeiWt_k",
@@ -105,86 +110,77 @@
         appId: "1:562140767505:web:31605600f7c115bf1918b0",
         measurementId: "G-XSYBG68LKZ"
         };
-
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    document.addEventListener("DOMContentLoaded", function () {
-        let save = document.getElementById("save");
-        let form = document.getElementById("profileForm");
+    let save = document.getElementById("save");
 
-        // Populate form fields from sessionStorage if data exists
-        if (sessionStorage.getItem("formData")) {
-            let formData = JSON.parse(sessionStorage.getItem("formData"));
-            Object.keys(formData).forEach(key => {
-                let element = form.elements[key];
-                if (element) {
-                    element.value = formData[key];
-                }
-            });
+    save.addEventListener("click", async (event) => {
+        event.preventDefault(); // Prevent the form from being submitted
+
+        let Name = document.getElementById("name").value;
+        let mobile = document.getElementById("mobile1").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let pincode = document.getElementById("pincode").value;
+
+        if (!Name || !mobile || !email || !address || !pincode) {
+            alert("Please fill in all the fields");
+            return;
         }
 
-        save.addEventListener("click", async (event) => {
-            event.preventDefault(); // Prevent the form from being submitted
+        const usersRef = collection(db, 'TheTeachersList');
+        const q = query(usersRef, where('Email', '==', email));
+        const querySnapshot = await getDocs(q);
+        let docExists = false;
 
-            let Name = document.getElementById("name").value;
-            let mobile2 = document.getElementById("mobile1").value;
-            let email = document.getElementById("email").value;
-            let address = document.getElementById("address").value;
-            let pincode = document.getElementById("pincode").value;
-
-            const userDocRef = doc(db, 'TheTeachersList', email);
-            const userDoc = await getDoc(userDocRef);
-
-            if (userDoc.exists()) {
-                try {
-                    await setDoc(userDocRef, {
-                        Name: Name,
-                        Mobile_Number: mobile2,
-                        Email: email,
-                        Address: address,
-                        Pincode: pincode
-                    });
-                    console.log("Document updated with ID: ", email);
-                    alert("Data updated successfully");
-                } catch (error) {
-                    console.error("Error updating document: ", error);
-                    alert("Unsuccessful operation, error: " + error);
-                }
-            } else {
-                try {
-                    await setDoc(userDocRef, {
-                        Name: Name,
-                        Mobile_Number: mobile2,
-                        Email: email,
-                        Address: address,
-                        Pincode: pincode
-                    });
-                    console.log("New document added with ID: ", email);
-                    alert("Data added successfully");
-                } catch (error) {
-                    console.error("Error adding document: ", error);
-                    alert("Unsuccessful operation, error: " + error);
-                }
+        querySnapshot.forEach(async (doc) => {
+            docExists = true;
+            try {
+                await updateDoc(doc.ref, {
+                    Name: Name,
+                    Mobile_Number: mobile,
+                    Email: email,
+                    Address: address,
+                    Pincode: pincode
+                });
+                console.log("Document updated with ID: ", email);
+                alert("Data updated successfully");
+                showMyCartButton(); // Show the "My Cart" button after profile update
+            } catch (error) {
+                console.error("Error updating document: ", error);
+                alert("Unsuccessful operation, error: " + error);
             }
-            let formData = {
-                Name: Name,
-                Mobile_Number: mobile2,
-                Email: email,
-                Address: address,
-                Pincode: pincode
-            };
-            sessionStorage.setItem("formData", JSON.stringify(formData));
         });
+
+        if (!docExists) {
+            try {
+                const docRef = await addDoc(usersRef, {
+                    Name: Name,
+                    Mobile_Number: mobile,
+                    Email: email,
+                    Address: address,
+                    Pincode: pincode
+                });
+                console.log("New document added with ID: ", email);
+                alert("Data added successfully");
+                showMyCartButton(); // Show the "My Cart" button after profile update
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("Unsuccessful operation, error: " + error);
+            }
+        }
     });
+
+    function showMyCartButton() {
+        const myCartDiv = document.getElementById("myCartDiv");
+        myCartDiv.style.display = "block";
+    }
+
+    // Initially hide the "My Cart" button
+    const myCartDiv = document.getElementById("myCartDiv");
+    myCartDiv.style.display = "none";
 </script>
-
-
-
-
-
-
-
 
 
 
